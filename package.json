@@ -10,14 +10,15 @@
     "stylelint": "stylelint -f verbose **/*.{css,scss,sass,less}"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.4",
     "@reduxjs/toolkit": "^1.6.1",
+    "antd": "^4.16.13",
+    "antd-img-crop": "^3.16.0",
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "next": "11.1.2",
     "next-connect": "^0.10.2",
-    "primeflex": "^3.0.1",
-    "primeicons": "^4.1.0",
-    "primereact": "^6.5.1",
+    "next-with-less": "^1.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.5",
@@ -28,14 +29,19 @@
   },
   "devDependencies": {
     "@types/react": "17.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-css-modules": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-redux": "^3.3.2",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "prettier": "^2.4.1",
     "redux-devtools": "^3.7.0",
-    "sass": "^1.41.1",
-    "sass-loader": "^12.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^22.0.0",
@@ -55,5 +61,12 @@
     "rules": {
       "order/properties-alphabetical-order": null
     }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 80,
+    "endOfLine": "auto"
   }
 }

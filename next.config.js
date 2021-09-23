@@ -1,4 +1,9 @@
+const withLess = require('next-with-less');
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = withLess({
   reactStrictMode: true,
-}
+  webpack(config) {
+    return config;
+  },
+});
