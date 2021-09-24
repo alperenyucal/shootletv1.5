@@ -1,67 +1,45 @@
 @import '~antd/dist/antd.less';
-@import '~antd/lib/style/themes/default.less';
 @import '~react-slideshow-image/dist/styles.css';
-
-@primary-color: #5333ed; // #802bb1; // primary color for all components
-@font-size-base: 14px; // major text font size
-@heading-color: rgba(0, 0, 0, 1); // heading text color
-@text-color: rgba(0, 0, 0, 1); // major text color
-@text-color-secondary: rgba(0, 0, 0, 0.85); // secondary text color
-@disabled-color: rgba(0, 0, 0, 0.25); // disable state color
-@border-radius-base: 8px; // major border radius
-@border-radius-sm: 4px;
-@border-color-base: #d9d9d9; // major border color
-@btn-font-weight: bold;
-@error-color: #ea3f54;
-@success-color: #08a459;
-@form-vertical-label-padding: 0 0 2px;
-@form-item-margin-bottom: 12px;
-
-.ant-checkbox-inner,
-.ant-checkbox-checked {
-  border-radius: 0 !important;
-}
-
-@steps-color: @primary-color;
-
-.ant-steps-item-active > .ant-steps-item-container > .ant-steps-item-icon,
-.ant-steps-item-finish
-  > .ant-steps-item-container
-  > .ant-steps-item-tail::after {
-  background-color: @steps-color;
-}
-
-.ant-steps-finish-icon {
-  color: @steps-color;
-}
-
-.ant-steps-item-title {
-  color: #fff !important;
-  font-weight: 600;
-}
-
-.ant-steps-item-container {
-  min-height: 80px;
-}
-
-body {
-  background-color: #fff; //#F2F1F8;
-}
+@import 'variables.less';
+@import 'utils.less';
 
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
+// .ant-checkbox-inner,
+// .ant-checkbox-checked {
+//   border-radius: 0 !important;
+// }
 
-.ant-form-item-explain::first-letter {
-  text-transform: capitalize;
-}
+// .ant-steps-item-active > .ant-steps-item-container > .ant-steps-item-icon,
+// .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+//   background-color: @steps-color;
+// }
 
-.no-padding > .ant-select-selector {
-  padding: 0 !important;
-}
+// .ant-steps-finish-icon {
+//   color: @steps-color;
+// }
+
+// .ant-steps-item-title {
+//   color: #fff !important;
+//   font-weight: 600;
+// }
+
+// .ant-steps-item-container {
+//   min-height: 80px;
+// }
+
+// label {
+//   display: block;
+//   margin-bottom: 8px;
+//   font-weight: 600;
+// }
+
+// .ant-form-item-explain::first-letter {
+//   text-transform: capitalize;
+// }
+
+// .no-padding > .ant-select-selector {
+//   padding: 0 !important;
+// }

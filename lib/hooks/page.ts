@@ -17,41 +17,40 @@ interface NavbarProps {
   show?: boolean;
 }
 
-interface IPageState {
-  page?: any;
+interface PageState {
+  //page?: any;
   navbar?: NavbarProps;
   header?: HeaderProps;
   footer?: FooterProps;
   loading?: boolean;
 }
 
-interface IContextProps {
-  setPageState?: Dispatch<SetStateAction<IPageState>>;
+interface ContextProps {
+  setPageState?: Dispatch<SetStateAction<PageState>>;
 }
 
-export const defaultPageState: IPageState = {
+export const defaultPageState: PageState = {
   navbar: { show: true },
   header: { show: true },
   footer: { show: true },
-  page: {},
+  //page: {},
   loading: false,
 };
 
-export const PageContext = createContext<IContextProps>({
+export const PageContext = createContext<ContextProps>({
   setPageState: undefined,
 });
 
-export function usePage(pageState: IPageState): void {
+export function usePage(pageState: PageState): void {
   const { setPageState } = useContext(PageContext);
 
   useEffect(() => {
     if (setPageState)
       setPageState({
-        page: { ...defaultPageState.page, ...pageState.page },
+        //page: { ...defaultPageState.page, ...pageState.page },
         navbar: { ...defaultPageState.navbar, ...pageState.navbar },
         header: { ...defaultPageState.header, ...pageState.header },
         footer: { ...defaultPageState.footer, ...pageState.footer },
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPageState]);
 }

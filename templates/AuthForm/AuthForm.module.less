@@ -1,0 +1,28 @@
+@import '../../styles/variables.less';
+
+.formCard {
+  min-width: 90vw;
+  padding: 0;
+  background-color: @white;
+  border-radius: @border-radius-rounded;
+  box-shadow: @box-shadow-base;
+
+  @media screen and (min-width: @screen-md-min) {
+    min-width: 70vw;
+    height: 80vh;
+  }
+}
+
+.welcomeHeading {
+  margin-top: 50px;
+  color: @text-color-inverse;
+}
+
+.column {
+  padding: @padding-sm @padding-lg;
+}
+
+.leftColumn {
+  border-bottom-left-radius: @border-radius-rounded;
+  border-top-left-radius: @border-radius-rounded;
+}
