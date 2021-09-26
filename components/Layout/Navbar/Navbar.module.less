@@ -1,0 +1,43 @@
+@import '../../../styles/variables.less';
+
+.navbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: @shadow-1-down;
+  transition: all @animation-duration-slow @ease-in-out;
+
+  * {
+    color: @text-color !important;
+  }
+}
+
+.fixed {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+
+.transparent {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: none;
+  box-shadow: none;
+
+  * {
+    color: @white !important;
+  }
+}
+
+.black {
+  * {
+    color: @text-color !important;
+  }
+}
+
+.white {
+  * {
+    color: @white !important;
+  }
+}

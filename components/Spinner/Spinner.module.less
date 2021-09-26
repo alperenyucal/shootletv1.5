@@ -1,0 +1,85 @@
+@import '../../styles/variables.less';
+
+.container {
+  position: relative;
+  width: 74px;
+  margin: 60px auto;
+  animation: clockwise 4s linear infinite;
+  font-size: 0;
+  transform-origin: 50% 50%;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 6px solid #e5e5e5;
+    border-radius: 100%;
+    content: '';
+  }
+}
+
+.lt,
+.rt,
+.lb,
+.rb {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 20px;
+  opacity: 1;
+  &::before {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border-top: 6px solid @primary-color;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-radius: 100%;
+    content: '';
+  }
+}
+
+.lt {
+  margin-right: -6px;
+  animation: lt 1s linear -1000ms infinite;
+  &::before {
+    top: 0;
+    left: 0;
+    animation: not-clockwise 0.5s linear infinite;
+  }
+}
+
+.rt {
+  animation: lt 1s linear -500ms infinite;
+  &::before {
+    top: 0;
+    right: 0;
+    animation: clockwise 0.5s linear infinite;
+  }
+}
+
+.lb {
+  margin-right: -6px;
+  animation: lt 1s linear -750ms infinite;
+  &::before {
+    bottom: 0;
+    left: 0;
+    animation: not-clockwise 0.5s linear infinite;
+  }
+}
+
+.rb {
+  animation: lt 1s linear -250ms infinite;
+  &::before {
+    right: 0;
+    bottom: 0;
+    animation: clockwise 0.5s linear infinite;
+  }
+}

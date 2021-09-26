@@ -29,25 +29,30 @@ const Register: NextPage = () => {
         validateTrigger={['onBlur', 'onChange', 'onSubmit']}
       >
         <Form.Item name="username">
-          <Input size="large" placeholder="Username" autoComplete="off" />
+          <Input size="large" placeholder="Username" autoComplete="nope" />
         </Form.Item>
         <Form.Item name="email">
-          <Input size="large" placeholder="Email" />
+          <Input size="large" placeholder="Email" autoComplete="nope" />
         </Form.Item>
         <Form.Item>
           <Input
             size="large"
             type="password"
             placeholder="Password"
-            autoComplete="off"
+            autoComplete="new-password"
           />
         </Form.Item>
         <Form.Item name="confirm">
-          <Input size="large" type="password" placeholder="Confirm Password" />
+          <Input
+            size="large"
+            type="password"
+            placeholder="Confirm Password"
+            autoComplete="new-password"
+          />
         </Form.Item>
         <Form.Item name="agreement" valuePropName="checked">
           <Checkbox>
-            I Have Read <Link href="/">Terms of Service</Link>
+            I Have Read <Link href="#">Terms of Service</Link>
           </Checkbox>
         </Form.Item>
         <Form.Item>

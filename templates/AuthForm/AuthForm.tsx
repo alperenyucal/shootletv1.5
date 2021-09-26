@@ -4,8 +4,8 @@ import { Col, Row } from 'antd';
 import Link from 'next/link';
 import Image from 'next/image';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
-import { Page } from '../../components';
 import classNames from 'classnames';
+import { useLayout } from '../../hooks/layout';
 
 interface AuthFormProps {
   header?: React.ReactNode;
@@ -15,9 +15,17 @@ interface AuthFormProps {
 export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
   const breakpoint = useBreakpoint();
 
+  useLayout({
+    header: { show: false },
+    navbar: { show: false },
+    footer: { show: false },
+  });
+
   return (
-    <Page className={classNames(breakpoint.md ? null : 'st-gradient')}>
-      {!breakpoint.md && (
+    <div
+      className={classNames(styles.authForm, { 'st-gradient': !breakpoint.lg })}
+    >
+      {!breakpoint.lg && (
         <Link href="/" passHref>
           <Image
             src="/shootlet-light.png"
@@ -30,7 +38,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
         </Link>
       )}
       <Row className={styles.formCard}>
-        {breakpoint.md && (
+        {breakpoint.lg && (
           <Col
             span={12}
             className={classNames(
@@ -54,12 +62,12 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
             </h2>
           </Col>
         )}
-        <Col md={12} span={24} className={styles.column}>
+        <Col lg={12} span={24} className={styles.column}>
           <Row justify="end">{header}</Row>
           <Row
             style={{
-              paddingTop: breakpoint.md ? 0 : '20px',
-              height: breakpoint.md ? '100%' : undefined,
+              paddingTop: breakpoint.lg ? 0 : '20px',
+              height: breakpoint.lg ? '100%' : undefined,
             }}
             align="middle"
             justify="center"
@@ -70,6 +78,6 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
           </Row>
         </Col>
       </Row>
-    </Page>
+    </div>
   );
 };
