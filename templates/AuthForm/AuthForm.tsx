@@ -23,18 +23,22 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
 
   return (
     <div
-      className={classNames(styles.authForm, { 'st-gradient': !breakpoint.lg })}
+      className={classNames(styles.authForm, {
+        'st-gradient-2': !breakpoint.lg,
+      })}
     >
       {!breakpoint.lg && (
         <Link href="/" passHref>
-          <Image
-            src="/shootlet-light.png"
-            layout="intrinsic"
-            width={200}
-            height={60}
-            alt=""
-            objectFit="cover"
-          />
+          <div>
+            <Image
+              src="/shootlet-light.png"
+              layout="intrinsic"
+              width={200}
+              height={60}
+              alt=""
+              objectFit="cover"
+            />
+          </div>
         </Link>
       )}
       <Row className={styles.formCard}>
@@ -44,22 +48,22 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
             className={classNames(
               styles.column,
               styles.leftColumn,
-              'st-gradient',
+              'st-gradient-2',
             )}
           >
             <Link href="/" passHref>
-              <Image
-                src="/shootlet-light.png"
-                layout="intrinsic"
-                width={140}
-                height={50}
-                alt=""
-                objectFit="contain"
-              />
+              <div>
+                <Image
+                  src="/shootlet-light.png"
+                  layout="intrinsic"
+                  width={140}
+                  height={50}
+                  alt=""
+                  objectFit="contain"
+                />
+              </div>
             </Link>
-            <h2 className={styles.welcomeHeading}>
-              {'Welcome' /* t("main:Welcome to React") */}
-            </h2>
+            <h2 className={styles.welcomeHeading}>{'Welcome'}</h2>
           </Col>
         )}
         <Col lg={12} span={24} className={styles.column}>

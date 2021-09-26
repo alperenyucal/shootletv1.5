@@ -3,12 +3,12 @@ import type { NextPage } from 'next';
 import { useLayout } from '../hooks/layout';
 import Link from 'next/link';
 const Home: NextPage = () => {
-  useLayout({ navbar: { show: true } });
+  useLayout({ navbar: { show: true }, header: { title: 'test' } });
 
   return (
-    <div>
+    <div className="st-container">
       <Button>
-        <Link href="/test"> test</Link>
+        <Link href="/test">test</Link>
       </Button>
     </div>
   );

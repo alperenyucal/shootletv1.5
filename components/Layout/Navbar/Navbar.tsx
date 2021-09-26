@@ -1,7 +1,7 @@
 import { Button, Space, Menu, Drawer } from 'antd';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
 import { MenuOutlined } from '@ant-design/icons';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { usePageOffset } from '../../../hooks/page';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -51,12 +51,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className={customClassName}>
       <Link href="/" passHref>
-        <Image
-          alt=""
-          src={isLight ? '/shootlet-light.png' : '/shootlet-logo.png'}
-          width={140}
-          height={50}
-        />
+        <div>
+          <Image
+            alt=""
+            src={isLight ? '/shootlet-light.png' : '/shootlet-logo.png'}
+            width={140}
+            height={50}
+          />
+        </div>
       </Link>
       {!breakpoint.lg ? (
         <>
@@ -82,12 +84,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             bodyStyle={{ padding: 0 }}
           >
             <Menu mode="inline">
-              <Menu.Item>
+              <Menu.Item key="register">
                 <Button type="primary" block>
                   <Link href="/register">Register</Link>
                 </Button>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item key="login">
                 <Button block>
                   <Link href="/login">Sign In</Link>
                 </Button>
