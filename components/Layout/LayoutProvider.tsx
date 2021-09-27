@@ -2,9 +2,8 @@ import { ReactNode, useState } from 'react';
 import { defaultLayoutState, LayoutContext } from './LayoutContext';
 import { PageHeader } from 'antd';
 import Spinner from '../Spinner/Spinner';
-import { Navbar } from '.';
+import { Navbar, Footer } from '.';
 import styles from './Layout.module.less';
-import classNames from 'classnames';
 
 const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [layoutState, setLayoutState] = useState(defaultLayoutState);
@@ -12,7 +11,7 @@ const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <LayoutContext.Provider value={{ setLayoutState }}>
       <div className={styles.layout}>
-        <header
+        <div
           className={layoutState.header?.show ? 'st-gradient-1' : undefined}
           style={{
             paddingBottom: layoutState.header?.show ? 100 : undefined,
@@ -25,7 +24,7 @@ const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
               {...layoutState.header}
             />
           )}
-        </header>
+        </div>
         <main
           style={
             layoutState.header?.show
@@ -35,12 +34,18 @@ const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         >
           {children}
           {layoutState.loading && (
-            <div>
+            <div
+              style={
+                layoutState.header?.show
+                  ? { position: 'relative', top: 100, marginBottom: 100 }
+                  : { position: 'relative' }
+              }
+            >
               <Spinner />
             </div>
           )}
         </main>
-        <footer></footer>
+        <Footer />
       </div>
     </LayoutContext.Provider>
   );

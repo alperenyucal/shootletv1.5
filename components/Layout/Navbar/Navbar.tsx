@@ -53,10 +53,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       <Link href="/" passHref>
         <div>
           <Image
-            alt=""
             src={isLight ? '/shootlet-light.png' : '/shootlet-logo.png'}
+            layout="intrinsic"
             width={140}
             height={50}
+            alt=""
+            objectFit="contain"
           />
         </div>
       </Link>

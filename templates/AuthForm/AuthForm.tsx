@@ -36,7 +36,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
               width={200}
               height={60}
               alt=""
-              objectFit="cover"
+              objectFit="contain"
             />
           </div>
         </Link>
