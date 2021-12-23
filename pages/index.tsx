@@ -1,15 +1,38 @@
-import { Button } from 'antd';
 import type { NextPage } from 'next';
 import { useLayout } from '../hooks/layout';
-import Link from 'next/link';
+import { Fade } from 'react-slideshow-image';
+
 const Home: NextPage = () => {
-  useLayout({ navbar: { show: true }, header: { title: 'test' } });
+  useLayout({
+    navbar: { show: true, fixed: true, transparent: true },
+    header: { show: false },
+  });
 
   return (
-    <div className="st-container">
-      <Button>
-        <Link href="/test">test</Link>
-      </Button>
+    <div style={{ position: 'relative', zIndex: -9999 }}>
+      <Fade arrows={false}>
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            height: 800,
+            background: 'url(/mainpage1.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            height: 800,
+            background: 'url(/mainpage2.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </Fade>
     </div>
   );
 };
