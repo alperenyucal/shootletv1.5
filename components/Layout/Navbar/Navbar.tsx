@@ -2,7 +2,7 @@ import { Button, Space, Menu, Drawer } from 'antd';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
 import { MenuOutlined } from '@ant-design/icons';
 import React, { useMemo, useState } from 'react';
-import { usePageOffset } from '../../../hooks/page';
+import { usePageOffset } from '../../../lib/hooks/page';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Navbar.module.less';

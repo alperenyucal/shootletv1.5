@@ -26,7 +26,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
     'object-curly-spacing': [2, 'always'],
-    'indent': [2, 2],
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
     'require-jsdoc': 'off',
     'valid-jsdoc': 'off',
     'linebreak-style': 'off',
@@ -38,6 +38,4 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
   },
-  'eslintIgnore': ['next.config.js', 'next-env.d.ts'],
-
 };

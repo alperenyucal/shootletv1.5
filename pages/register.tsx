@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { NextPage } from 'next';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import { AuthForm } from '../src/templates';
+import { AuthForm } from '../components/templates';
 
 const Register: NextPage = () => {
   // const router = useRouter();

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
 import classNames from 'classnames';
-import { useLayout } from '../../hooks/layout';
+import { useLayout } from '../../../lib/hooks/layout';
 
 interface AuthFormProps {
   header?: React.ReactNode;

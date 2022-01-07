@@ -1,4 +1,4 @@
-import { useLayout } from '../src/hooks/layout';
+import { useLayout } from '../lib/hooks/layout';
 import Error, { ErrorProps } from 'next/error';
 
 const CustomError: React.FC<ErrorProps> = ({ title, statusCode }) => {

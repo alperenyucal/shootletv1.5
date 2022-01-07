@@ -1,11 +1,11 @@
-import styles from '../src/styles/pages/login.module.less';
+import styles from '../styles/pages/login.module.less';
 import { Alert, Button, Form, Input, Row } from 'antd';
 // import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { AuthForm } from '../src/templates';
+import { AuthForm } from '../components/templates';
 
 interface FormValues {
   username: string;

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useLayout } from '../src/hooks/layout';
+import { useLayout } from '../lib/hooks/layout';
 import { Fade } from 'react-slideshow-image';
 
 const Home: NextPage = () => {

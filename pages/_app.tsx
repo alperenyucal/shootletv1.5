@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
-import LayoutProvider from '../src/components/Layout/LayoutProvider';
-import '../src/styles/globals.less';
+import LayoutProvider from '../components/Layout/LayoutProvider';
+import '../styles/globals.less';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
