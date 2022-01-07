@@ -10,70 +10,41 @@
     "stylelint": "stylelint -f verbose **/*.{css,scss,sass,less}"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.6.4",
-    "@reduxjs/toolkit": "^1.6.1",
-    "antd": "^4.16.13",
-    "antd-img-crop": "^3.16.0",
-    "axios": "^0.21.4",
+    "@ant-design/icons": "^4.7.0",
+    "@reduxjs/toolkit": "^1.7.1",
+    "antd": "^4.18.2",
+    "antd-img-crop": "^4.0.2",
+    "axios": "^0.24.0",
     "classnames": "^2.3.1",
-    "next": "11.1.2",
-    "next-connect": "^0.10.2",
-    "next-with-less": "^1.0.1",
+    "next": "12.0.7",
+    "next-connect": "^0.11.0",
+    "next-with-less": "^2.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-redux": "^7.2.5",
-    "react-slideshow-image": "^3.5.0",
+    "react-redux": "^7.2.6",
+    "react-slideshow-image": "^3.6.0",
     "react-transition-group": "^4.4.2",
-    "swr": "^1.0.1",
-    "zod": "^3.8.2"
+    "swr": "^1.1.2",
+    "zod": "^3.11.6"
   },
   "devDependencies": {
-    "@types/react": "17.0.24",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
-    "eslint-config-prettier": "^8.3.0",
+    "@types/react": "17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "8.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-next": "12.0.7",
     "eslint-plugin-css-modules": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react-redux": "^3.3.2",
-    "less": "^4.1.1",
-    "less-loader": "^10.0.1",
-    "prettier": "^2.4.1",
-    "redux-devtools": "^3.7.0",
-    "stylelint": "^13.13.1",
+    "eslint-plugin-react-redux": "^3.3.4",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "stylelint": "^14.2.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-prettier": "^1.2.0",
-    "typescript": "4.4.3"
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-idiomatic-order",
-      "stylelint-prettier/recommended"
-    ],
-    "plugins": [
-      "stylelint-prettier"
-    ],
-    "rules": {
-      "prettier/prettier": true,
-      "order/properties-alphabetical-order": null
-    },
-    "ignoreFiles": [
-      "**/*.js",
-      "**/*.jsx",
-      "**/*.ts",
-      "**/*.tsx"
-    ]
-  },
-  "prettier": {
-    "semi": true,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "printWidth": 80,
-    "endOfLine": "auto"
+    "stylelint-config-recommended-less": "^1.0.1",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-less": "^1.0.1",
+    "typescript": "4.5.4"
   }
 }

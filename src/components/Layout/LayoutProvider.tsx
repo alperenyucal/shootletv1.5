@@ -27,18 +27,18 @@ const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         </div>
         <main
           style={
-            layoutState.header?.show
-              ? { position: 'relative', top: -100, marginBottom: 100 }
-              : { position: 'relative' }
+            layoutState.header?.show ?
+              { position: 'relative', top: -100, marginBottom: 100 } :
+              { position: 'relative' }
           }
         >
           {children}
           {layoutState.loading && (
             <div
               style={
-                layoutState.header?.show
-                  ? { position: 'relative', top: 100, marginBottom: 100 }
-                  : { position: 'relative' }
+                layoutState.header?.show ?
+                  { position: 'relative', top: 100, marginBottom: 100 } :
+                  { position: 'relative' }
               }
             >
               <Spinner />

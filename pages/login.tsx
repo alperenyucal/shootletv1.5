@@ -1,11 +1,11 @@
-import styles from '../styles/pages/login.module.less';
+import styles from '../src/styles/pages/login.module.less';
 import { Alert, Button, Form, Input, Row } from 'antd';
 // import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { AuthForm } from '../templates';
+import { AuthForm } from '../src/templates';
 
 interface FormValues {
   username: string;
@@ -35,7 +35,7 @@ const Login: NextPage = () => {
         form={form}
         name="login-form"
         layout="vertical"
-        onFinish={undefined /*handleFinish*/}
+        onFinish={undefined /* handleFinish*/}
       >
         {loginError && (
           <Alert
@@ -52,17 +52,31 @@ const Login: NextPage = () => {
           name="username"
           rules={[{ message: 'Please enter your username!' }]}
         >
-          <Input placeholder="Username" size="large" />
+          <Input
+            placeholder="Username"
+            size="large"
+          />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[{ message: 'Please enter your password!' }]}
         >
-          <Input type="password" placeholder="Password" size="large" />
+          <Input
+            type="password"
+            placeholder="Password"
+            size="large"
+          />
         </Form.Item>
-        <Row justify="center" className={styles.submitRow}>
+        <Row
+          justify="center"
+          className={styles.submitRow}
+        >
           <Link href="/forgot-password">Forgot Password?</Link>
-          <Button type="primary" htmlType="submit" className="st-push">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="st-push"
+          >
             Submit
           </Button>
         </Row>
@@ -72,7 +86,8 @@ const Login: NextPage = () => {
 
   // async function handleFinish({ username, password }: FormValues) {
   //   try {
-  //     const res = await axios.post('/api/auth/login', { username, password });
+  //     const res = await axios.post(
+  // '/api/auth/login', { username, password });
   //     if (router.query.ref) router.push('/' + router.query.ref.toString());
   //     else router.push('/');
   //   } catch (error) {

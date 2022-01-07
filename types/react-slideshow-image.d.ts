@@ -9,7 +9,8 @@ declare module 'react-slideshow-image' {
     goNext(): void;
     goTo(index: number): void;
   }
-  export class Slide extends React.Component<SlideshowProps & unknown, unknown> {
+  export class Slide extends
+    React.Component<SlideshowProps & unknown, unknown> {
     goBack(): void;
     goNext(): void;
     goTo(index: number): void;

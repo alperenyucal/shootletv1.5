@@ -28,7 +28,10 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
       })}
     >
       {!breakpoint.lg && (
-        <Link href="/" passHref>
+        <Link
+          href="/"
+          passHref
+        >
           <div>
             <Image
               src="/shootlet-light.png"
@@ -51,7 +54,10 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
               'st-gradient-2',
             )}
           >
-            <Link href="/" passHref>
+            <Link
+              href="/"
+              passHref
+            >
               <div>
                 <Image
                   src="/shootlet-light.png"
@@ -66,7 +72,11 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
             <h2 className={styles.welcomeHeading}>{'Welcome'}</h2>
           </Col>
         )}
-        <Col lg={12} span={24} className={styles.column}>
+        <Col
+          lg={12}
+          span={24}
+          className={styles.column}
+        >
           <Row justify="end">{header}</Row>
           <Row
             style={{
@@ -76,7 +86,11 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
             align="middle"
             justify="center"
           >
-            <Col span={24} lg={20} xl={16}>
+            <Col
+              span={24}
+              lg={20}
+              xl={16}
+            >
               {children}
             </Col>
           </Row>

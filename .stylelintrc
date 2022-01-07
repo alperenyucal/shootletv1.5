@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "stylelint-config-recommended-less",
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "string-quotes": "single",
+    "indentation": 2,
+    "max-line-length": 80,
+    "at-rule-empty-line-before": null,
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "plugins": [
+    "stylelint-less"
+  ]
+}

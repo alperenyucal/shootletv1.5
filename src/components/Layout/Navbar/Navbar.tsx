@@ -50,7 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <div className={customClassName}>
-      <Link href="/" passHref>
+      <Link
+        href="/"
+        passHref
+      >
         <div>
           <Image
             src={isLight ? '/shootlet-light.png' : '/shootlet-logo.png'}
@@ -87,7 +90,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Menu mode="inline">
               <Menu.Item key="register">
-                <Button type="primary" block>
+                <Button
+                  type="primary"
+                  block
+                >
                   <Link href="/register">Register</Link>
                 </Button>
               </Menu.Item>
@@ -102,7 +108,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </>
       ) : (
         <>
-          <Space align="center" style={{ marginLeft: '50px' }}>
+          <Space
+            align="center"
+            style={{ marginLeft: '50px' }}
+          >
             <Button type="text">
               <Link href="/dashboard">Switch to selling</Link>
             </Button>
@@ -114,7 +123,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Button type="text">
               <Link href="/login">Log in</Link>
             </Button>
-            <Button ghost={!isTransparent} type="primary">
+            <Button
+              ghost={!isTransparent}
+              type="primary"
+            >
               <Link href="/register">Join Us</Link>
             </Button>
           </Space>

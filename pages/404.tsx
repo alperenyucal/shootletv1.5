@@ -1,4 +1,4 @@
-import { useLayout } from '../hooks/layout';
+import { useLayout } from '../src/hooks/layout';
 
 export default function Error404(): null {
   useLayout({

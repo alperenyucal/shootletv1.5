@@ -1,0 +1,67 @@
+@import './variables.less';
+
+.st- {
+  &container {
+    padding: 20px 100px;
+  }
+
+  &push {
+    margin-left: auto;
+  }
+
+  &fill {
+    width: 100%;
+    height: 100%;
+  }
+
+  &force-white {
+    * {
+      color: @white;
+    }
+  }
+
+  &center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &gradient-1 {
+    background: rgb(141 63 208);
+    background:
+      linear-gradient(
+        135deg,
+        rgb(141 63 208 / 100%) 0%,
+        rgb(22 27 127 / 100%) 100%
+      );
+  }
+
+  &gradient-2 {
+    background-image:
+      linear-gradient(
+        to left top,
+        #2cd4d9,
+        #00c2f3,
+        #00a9ff,
+        #4e86ff,
+        #ac52da
+      );
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .st- {
+    &container {
+      padding: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .st- {
+    &container {
+      padding: 20px 12vw;
+    }
+  }
+}

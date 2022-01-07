@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useLayout } from '../hooks/layout';
+import { useLayout } from '../src/hooks/layout';
 
 const Test: NextPage = () => {
   useLayout({

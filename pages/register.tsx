@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { NextPage } from 'next';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import { AuthForm } from '../templates';
+import { AuthForm } from '../src/templates';
 
 const Register: NextPage = () => {
   // const router = useRouter();
@@ -25,14 +25,22 @@ const Register: NextPage = () => {
         requiredMark={false}
         layout="vertical"
         name="register"
-        //onFinish={onFinish}
+        // onFinish={onFinish}
         validateTrigger={['onBlur', 'onChange', 'onSubmit']}
       >
         <Form.Item name="username">
-          <Input size="large" placeholder="Username" autoComplete="nope" />
+          <Input
+            size="large"
+            placeholder="Username"
+            autoComplete="nope"
+          />
         </Form.Item>
         <Form.Item name="email">
-          <Input size="large" placeholder="Email" autoComplete="nope" />
+          <Input
+            size="large"
+            placeholder="Email"
+            autoComplete="nope"
+          />
         </Form.Item>
         <Form.Item>
           <Input
@@ -50,13 +58,19 @@ const Register: NextPage = () => {
             autoComplete="new-password"
           />
         </Form.Item>
-        <Form.Item name="agreement" valuePropName="checked">
+        <Form.Item
+          name="agreement"
+          valuePropName="checked"
+        >
           <Checkbox>
             I Have Read <Link href="#">Terms of Service</Link>
           </Checkbox>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button
+            type="primary"
+            htmlType="submit"
+          >
             Register
           </Button>
         </Form.Item>
