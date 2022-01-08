@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import User, { User as UserType } from '../../models/UserModel';
-import Admin from '../../models/AdminModel';
 import { Document } from 'mongoose';
+import AdminModel from '../../models/AdminModel';
 
-interface ResObject {
+export interface ResObject {
   isAuthorized: boolean;
   isAdmin: boolean;
   user: UserType & Document;
@@ -14,7 +14,7 @@ interface ResObject {
     Promise<void | NextApiResponse>) => Promise<void | NextApiResponse>;
 }
 
-export default async function authorize(
+export async function authorize(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<ResObject> {
@@ -31,9 +31,9 @@ export default async function authorize(
         process.env.ACCESS_TOKEN_SECRET,
       ) as JwtPayload;
       isAuthorized = true;
-      user = await User.findOne({ username: decoded.data.user });
+      user = await User.findOne({ email: decoded.data.email });
 
-      if (await Admin.findOne({ user: user?._id })) {
+      if (await AdminModel.findOne({ user: user?._id })) {
         isAdmin = true;
       }
     } catch (error) {
@@ -57,6 +57,9 @@ export default async function authorize(
       },
     };
   } else {
+    if (!res.headersSent) {
+      res.status(401).json({ message: 'Authorization failed' });
+    }
     return Promise.reject(new Error('Authorization failed'));
   }
 }

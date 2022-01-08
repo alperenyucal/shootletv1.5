@@ -88,3 +88,49 @@
     animation: clockwise 0.5s linear infinite;
   }
 }
+
+@keyframes clockwise {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    transform: rotate(315deg);
+  }
+}
+
+@keyframes not-clockwise {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(-315deg);
+  }
+}
+
+@keyframes lt {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  76% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

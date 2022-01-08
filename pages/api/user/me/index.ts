@@ -1,13 +1,12 @@
-import connectDB from '../../../../lib/utils/middleware/mongodb';
-import User from '../../../../lib/models/UserModel';
-import authorize from '../../../../lib/utils/middleware/authorize';
+import UserModel from '../../../../lib/models/UserModel';
 import { NextApiHandler } from 'next';
+import { authorize, connectDB } from '../../../../lib/utils/middleware';
 
 const handler: NextApiHandler = async (req, res) => {
-  await connectDB();
-  const { authorizeHOC, user } = await authorize(req, res);
-
   try {
+    await connectDB();
+    const { authorizeHOC, user } = await authorize(req, res);
+
     await authorizeHOC(async () => {
       switch (req.method) {
         case 'GET':
@@ -15,7 +14,7 @@ const handler: NextApiHandler = async (req, res) => {
           break;
 
         case 'POST':
-          await User.findByIdAndUpdate(user._id, { ...req.body });
+          await UserModel.findByIdAndUpdate(user._id, { ...req.body });
 
           res.status(200).json(user);
           break;
@@ -25,7 +24,9 @@ const handler: NextApiHandler = async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(400).json({ message: error });
+    if (!res.headersSent) {
+      res.status(400).json({ message: error });
+    }
   }
 };
 

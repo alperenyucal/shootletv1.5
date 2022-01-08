@@ -1,19 +1,23 @@
 import styles from '../styles/pages/login.module.less';
 import { Alert, Button, Form, Input, Row } from 'antd';
-// import axios from 'axios';
+import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { AuthForm } from '../components/templates';
+import { useAppDispatch } from '../lib/hooks/redux';
+import { login } from '../lib/redux/auth/authSlice';
 
 interface FormValues {
-  username: string;
+  email: string;
   password: string;
 }
 
+
 const Login: NextPage = () => {
-  // const router = useRouter();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const [form] = Form.useForm<FormValues>();
 
@@ -35,7 +39,7 @@ const Login: NextPage = () => {
         form={form}
         name="login-form"
         layout="vertical"
-        onFinish={undefined /* handleFinish*/}
+        onFinish={handleFinish}
       >
         {loginError && (
           <Alert
@@ -43,17 +47,17 @@ const Login: NextPage = () => {
             onClose={() => {
               setLoginError(false);
             }}
-            message="Wrong username or password"
+            message="Wrong email or password"
             type="error"
             style={{ marginBottom: '20px' }}
           />
         )}
         <Form.Item
-          name="username"
-          rules={[{ message: 'Please enter your username!' }]}
+          name="email"
+          rules={[{ message: 'Please enter your email!' }]}
         >
           <Input
-            placeholder="Username"
+            placeholder="email"
             size="large"
           />
         </Form.Item>
@@ -84,16 +88,19 @@ const Login: NextPage = () => {
     </AuthForm>
   );
 
-  // async function handleFinish({ username, password }: FormValues) {
-  //   try {
-  //     const res = await axios.post(
-  // '/api/auth/login', { username, password });
-  //     if (router.query.ref) router.push('/' + router.query.ref.toString());
-  //     else router.push('/');
-  //   } catch (error) {
-  //     setLoginError(true);
-  //   }
-  // }
+  async function handleFinish({ email, password }: FormValues) {
+    try {
+      const res = await axios.post(
+        '/api/auth/login', { email, password });
+      console.log(res);
+
+      dispatch(login(res.data));
+      if (router.query.ref) router.push('/' + router.query.ref.toString());
+      else router.push('/');
+    } catch (error) {
+      setLoginError(true);
+    }
+  }
 };
 
 export default Login;

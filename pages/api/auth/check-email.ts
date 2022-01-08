@@ -1,16 +1,16 @@
-import connectDB from '../../../lib/utils/middleware/mongodb';
-import User from '../../../lib/models/UserModel';
+import UserModel from '../../../lib/models/UserModel';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { connectDB } from '../../../lib/utils/middleware';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await connectDB();
-
   try {
-    const { username } = req.body;
-    console.log(username);
+    await connectDB();
+
+    const { email } = req.body;
+    console.log(email);
     switch (req.method) {
       case 'POST': {
-        const user = await User.findOne({ username });
+        const user = await UserModel.findOne({ email });
         res.status(200).json({ userExists: !!user });
         break;
       }
@@ -18,7 +18,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(404).end();
     }
   } catch (error) {
-    res.status(400).json({ error });
+    if (!res.headersSent) {
+      res.status(400).json({ message: error });
+    }
   }
 }
 

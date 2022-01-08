@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export default async function connectDB():
+export async function connectDB():
   Promise<typeof mongoose | undefined> {
   if (mongoose.connection.readyState >= 1) {
     return;

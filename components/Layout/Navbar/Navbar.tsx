@@ -1,4 +1,4 @@
-import { Button, Space, Menu, Drawer } from 'antd';
+import { Button, Space, Menu, Drawer, Dropdown } from 'antd';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
 import { MenuOutlined } from '@ant-design/icons';
 import React, { useMemo, useState } from 'react';
@@ -7,6 +7,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Navbar.module.less';
 import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../../lib/hooks/redux';
+import { logout, selectAuth } from '../../../lib/redux/auth/authSlice';
+import { AvatarSection } from './Avatar/Avatar';
+import { useRouter } from 'next/router';
 
 export interface NavbarProps {
   fixed?: boolean;
@@ -21,7 +25,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   color,
   logoType,
 }) => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const { isAuthorized, user } = useAppSelector(selectAuth);
+
+  function handleLogout() {
+    dispatch(logout());
+    router.push('/');
+  }
+
   const breakpoint = useBreakpoint();
+
   const { pageYOffset } = usePageOffset();
   const [showDrawerMenu, setShowDrawerMenu] = useState(false);
 
@@ -29,6 +44,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     () => transparent && pageYOffset < 20,
     [pageYOffset, transparent],
   );
+
+  const isLight = useMemo(() => {
+    if (logoType) return logoType === 'light';
+    if (color) return color === 'white';
+
+    return isTransparent;
+  }, [color, isTransparent, logoType]);
+
 
   const customClassName = useMemo(
     () =>
@@ -41,13 +64,19 @@ export const Navbar: React.FC<NavbarProps> = ({
     [color, fixed, isTransparent],
   );
 
-  const isLight = useMemo(() => {
-    if (logoType) return logoType === 'light';
-    if (color) return color === 'white';
 
-    return isTransparent;
-  }, [color, isTransparent, logoType]);
-
+  const UserMenu = (
+    <Menu>
+      {/* <Menu.Item>Profile</Menu.Item>
+      <Menu.Item>Dashboard</Menu.Item>
+      <Menu.Item>Settings</Menu.Item>
+      <Menu.Item>Switch language</Menu.Item>
+      <Menu.Item>My Wallet</Menu.Item>
+      <Menu.Item>{"Help & Support"}</Menu.Item>
+      <Menu.Divider /> */}
+      <Menu.Item onClick={handleLogout}>Logout</Menu.Item>
+    </Menu>
+  );
   return (
     <div className={customClassName}>
       <Link
@@ -60,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             layout="intrinsic"
             width={140}
             height={50}
-            alt=""
+            alt="logo"
             objectFit="contain"
           />
         </div>
@@ -80,7 +109,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </Button>
           <Drawer
             forceRender
-            title={<span>Welcome Guest!</span>}
+            title={
+              isAuthorized ? <AvatarSection user={user} /> :
+                <span>Welcome Guest!</span>
+            }
             placement="right"
             onClose={() => {
               setShowDrawerMenu(false);
@@ -120,15 +152,35 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Button>
           </Space>
           <Space className="st-push">
-            <Button type="text">
-              <Link href="/login">Log in</Link>
-            </Button>
-            <Button
-              ghost={!isTransparent}
-              type="primary"
-            >
-              <Link href="/register">Join Us</Link>
-            </Button>
+            {isAuthorized ? (
+              <>
+                <Button type="text">
+                  <Link href="/my-events">My Events</Link>
+                </Button>
+
+                {/* <Button type="text">Messages</Button> */}
+                <Dropdown
+                  trigger={['click']}
+                  overlay={UserMenu}
+                >
+                  <div className={styles['avatar-wrapper']}>
+                    <AvatarSection user={user} />
+                  </div>
+                </Dropdown>
+              </>
+            ) : (
+              <>
+                <Button type="text">
+                  <Link href="/login">Log in</Link>
+                </Button>
+                <Button
+                  ghost={!isTransparent}
+                  type="primary"
+                >
+                  <Link href="/register">Join Us</Link>
+                </Button>
+              </>
+            )}
           </Space>
         </>
       )}

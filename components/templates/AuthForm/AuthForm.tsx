@@ -6,6 +6,10 @@ import Image from 'next/image';
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint';
 import classNames from 'classnames';
 import { useLayout } from '../../../lib/hooks/layout';
+import { useAppSelector } from '../../../lib/hooks/redux';
+import { selectAuth } from '../../../lib/redux/auth/authSlice';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface AuthFormProps {
   header?: React.ReactNode;
@@ -13,6 +17,9 @@ interface AuthFormProps {
 }
 
 export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
+  const router = useRouter();
+  const isAuthorized = useAppSelector(selectAuth);
+
   const breakpoint = useBreakpoint();
 
   useLayout({
@@ -20,6 +27,10 @@ export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
     navbar: { show: false },
     footer: { show: false },
   });
+
+  useEffect(() => {
+    if (isAuthorized) router.replace('/');
+  }, [isAuthorized, router]);
 
   return (
     <div

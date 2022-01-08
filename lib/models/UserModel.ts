@@ -5,7 +5,6 @@ import { Country } from './CountryModel';
 import { MFile } from './MFileModel';
 
 export interface User {
-  username: string;
   email: string;
   password: string;
 
@@ -22,11 +21,6 @@ export interface User {
 }
 
 const schema = new Schema<User, Model<User>, User>({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-  },
   email: {
     type: String,
     unique: true,

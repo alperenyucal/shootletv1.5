@@ -1,15 +1,15 @@
-import connectDB from '../../../../lib/utils/middleware/mongodb';
-import User from '../../../../lib/models/UserModel';
+import UserModel from '../../../../lib/models/UserModel';
 
 import { NextApiRequest, NextApiResponse } from 'next';
+import { connectDB } from '../../../../lib/utils/middleware';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await connectDB();
-
   try {
+    await connectDB();
+
     switch (req.method) {
       case 'GET': {
-        const users = await User.find({}).limit(5).select('-password');
+        const users = await UserModel.find({}).limit(5).select('-password');
         res.status(200).json(users);
         break;
       }
@@ -17,7 +17,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(404).end();
     }
   } catch (error) {
-    res.status(400).json({ message: error });
+    if (!res.headersSent) {
+      res.status(400).json({ message: error });
+    }
   }
 }
 

@@ -1,21 +1,21 @@
-import connectDB from '../../../lib/utils/middleware/mongodb';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { connectDB } from '../../../lib/utils/middleware';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await connectDB();
-
   try {
+    await connectDB();
+
     const { accessToken, refreshToken } = req.body;
     switch (req.method) {
       case 'POST': {
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET as string);
 
-        const decoded: any =
+        const decoded =
           jwt.verify(
             accessToken,
             process.env.ACCESS_TOKEN_SECRET as string,
-            { ignoreExpiration: true });
+            { ignoreExpiration: true }) as JwtPayload;
 
         const newAccessToken = jwt.sign(
           { data: decoded.data },
@@ -39,7 +39,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(404).end();
     }
   } catch (error) {
-    res.status(400).json({ error });
+    if (!res.headersSent) {
+      res.status(400).json({ message: error });
+    }
   }
 }
 

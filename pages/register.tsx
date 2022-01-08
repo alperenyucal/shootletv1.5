@@ -28,13 +28,6 @@ const Register: NextPage = () => {
         // onFinish={onFinish}
         validateTrigger={['onBlur', 'onChange', 'onSubmit']}
       >
-        <Form.Item name="username">
-          <Input
-            size="large"
-            placeholder="Username"
-            autoComplete="nope"
-          />
-        </Form.Item>
         <Form.Item name="email">
           <Input
             size="large"
