@@ -18,7 +18,7 @@ interface AuthFormProps {
 
 export const AuthForm: React.FC<AuthFormProps> = ({ header, children }) => {
   const router = useRouter();
-  const isAuthorized = useAppSelector(selectAuth);
+  const { isAuthorized } = useAppSelector(selectAuth);
 
   const breakpoint = useBreakpoint();
 

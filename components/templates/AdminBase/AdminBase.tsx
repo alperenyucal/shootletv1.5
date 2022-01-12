@@ -13,11 +13,12 @@ import { useLayout } from '../../../lib/hooks/layout';
 import styles from './AdminBase.module.less';
 import { LoadingScreen } from '..';
 import Error404 from '../../../pages/404';
+import Image from 'next/image';
 
 interface AdminBaseProps {
   children?: React.ReactNode;
-  // selectedKey?: string;
-  // openKey?: string;
+  selectedKey: string;
+  openKey: string;
   onBack?: () => void;
   routes?: [];
   subtitle?: string;
@@ -26,8 +27,8 @@ interface AdminBaseProps {
 
 export function AdminBase({
   children,
-  // selectedKey,
-  // openKey,
+  selectedKey,
+  openKey,
   onBack,
   routes,
   subtitle,
@@ -67,13 +68,32 @@ export function AdminBase({
       ) : (
         <>
           <Layout style={{ minHeight: '100vh' }}>
-            <Header className="header"></Header>
+            <Header className={styles.header}>
+              <Link
+                href="/admin"
+                passHref
+              >
+                <Image
+                  src={'/shootlet-light.png'}
+                  layout="intrinsic"
+                  width={120}
+                  height={50}
+                  alt="logo"
+                  objectFit="contain"
+                />
+              </Link>
+            </Header>
             <Layout>
               <Sider
                 width={200}
                 className="site-layout-background"
               >
-                <Menu >
+                <Menu
+                  theme="dark"
+                  mode="inline"
+                  defaultSelectedKeys={[selectedKey]}
+                  defaultOpenKeys={[openKey]}
+                >
                   <SubMenu
                     key="user"
                     icon={<UserOutlined />}

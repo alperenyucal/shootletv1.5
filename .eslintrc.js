@@ -24,6 +24,7 @@ module.exports = {
   'plugins': ['@typescript-eslint', 'jsx-a11y', 'css-modules', 'react-redux'],
   'rules': {
     'react/react-in-jsx-scope': 0,
+    'jsx-quotes': ['error', 'prefer-double'],
     'react/prop-types': 0,
     'object-curly-spacing': [2, 'always'],
     'indent': ['error', 2, { 'SwitchCase': 1 }],
@@ -37,5 +38,18 @@ module.exports = {
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        'multiline': {
+          'delimiter': 'semi',
+          'requireLast': true,
+        },
+        'singleline': {
+          'delimiter': 'semi',
+          'requireLast': false,
+        },
+      },
+    ],
   },
 };

@@ -3,6 +3,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 // import UserSelect from '../../components/UserSelect/UserSelect';
 import { AdminBase } from '../../components/templates';
+import UserSelect from '../../components/UserSelect/UserSelect';
+
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 const defaultValues = {
   color: '#000000',
@@ -15,7 +21,7 @@ export default function Admins() {
   const [data, setData] = useState<any>([]);
   const [formStatus, setFormStatus] = useState<'Create' | null>(null);
   const [initialValues, setInitials] = useState<any>(null);
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<FormValues>();
   const [shouldUpdate, setShouldUpdate] = useState(false);
 
   useEffect(() => {
@@ -33,13 +39,13 @@ export default function Admins() {
   return (
     <AdminBase
       title="Admins"
-    // selectedKey="admins"
-    // openKey="user"
+      selectedKey="admins"
+      openKey="user"
     >
       <Row gutter={20}>
         <Col span={14}>
           <div
-            className="arc-fill"
+            className="st-fill-horizontal"
             style={{
               display: 'flex',
               justifyContent: 'end',
@@ -52,7 +58,7 @@ export default function Admins() {
                 setFormStatus('Create');
                 setInitials(defaultValues);
               }}
-              className="arc-push"
+              className="st-push"
               type="primary"
             >
               Add Admin
@@ -98,7 +104,7 @@ export default function Admins() {
               <Form
                 labelCol={{ span: 6 }}
                 layout="vertical"
-                onFinish={onFinish}
+                onFinish={handleFinish}
                 initialValues={initialValues}
                 form={form}
               >
@@ -107,7 +113,7 @@ export default function Admins() {
                   label="Username"
                   name="user"
                 >
-                  {/* <UserSelect /> */}
+                  <UserSelect />
                 </Form.Item>
 
                 <Space>
@@ -136,7 +142,7 @@ export default function Admins() {
     </AdminBase>
   );
 
-  async function onFinish(values: any) {
+  async function handleFinish(values: FormValues) {
     try {
       if (formStatus === 'Create') {
         await axios.post(apiEndpoint, values);

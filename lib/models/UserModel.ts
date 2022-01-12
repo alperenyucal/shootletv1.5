@@ -8,6 +8,8 @@ export interface User {
   email: string;
   password: string;
 
+  username: string;
+
   firstname: string;
   lastname: string;
   birthDate: Date;
@@ -28,6 +30,11 @@ const schema = new Schema<User, Model<User>, User>({
   },
   password: {
     type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+    unique: true,
     required: true,
   },
   firstname: String,
