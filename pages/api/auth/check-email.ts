@@ -1,9 +1,10 @@
 import UserModel from '../../../lib/models/UserModel';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connectDB } from '../../../lib/utils/middleware';
+import { connectDB, logger } from '../../../lib/utils/middleware';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
+    logger(req);
     await connectDB();
 
     const { email } = req.body;

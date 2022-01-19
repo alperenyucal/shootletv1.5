@@ -1,9 +1,11 @@
 import UserModel from '../../../../lib/models/UserModel';
 import { NextApiHandler } from 'next';
-import { authorize, connectDB } from '../../../../lib/utils/middleware';
+import { authorize, connectDB, logger } from '../../../../lib/utils/middleware';
 
 const handler: NextApiHandler = async (req, res) => {
   try {
+    logger(req);
+
     await connectDB();
     const { authorizeHOC, user } = await authorize(req, res);
 

@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 import { NextApiHandler } from 'next';
-import { connectDB } from '../../../lib/utils/middleware';
+import { connectDB, logger } from '../../../lib/utils/middleware';
 
 const reqSchema = z.object({
   email: z.string().email().nonempty(),
@@ -16,6 +16,7 @@ const reqSchema = z.object({
 
 const handler: NextApiHandler = async (req, res) => {
   try {
+    logger(req);
     await connectDB();
 
     const { email, password } = req.body;

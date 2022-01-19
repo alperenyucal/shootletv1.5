@@ -12,7 +12,6 @@ export interface User {
 
   firstname: string;
   lastname: string;
-  birthDate: Date;
 
   avatar: PopulatedDoc<MFile & Document>;
 
@@ -39,7 +38,6 @@ const schema = new Schema<User, Model<User>, User>({
   },
   firstname: String,
   lastname: String,
-  birthDate: Date,
   phoneNumber: String,
 
   avatar: { type: Schema.Types.ObjectId, ref: 'MFile' },

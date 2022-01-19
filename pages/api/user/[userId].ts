@@ -1,10 +1,12 @@
 import UserModel from '../../../lib/models/UserModel';
 import { NextApiHandler } from 'next';
 import mongoose from 'mongoose';
-import { authorize, connectDB } from '../../../lib/utils/middleware';
+import { authorize, connectDB, logger } from '../../../lib/utils/middleware';
 
 const handler: NextApiHandler = async (req, res) => {
   try {
+    logger(req);
+
     await connectDB();
     const { adminHOC } = await authorize(req, res);
     const { userId } = req.query;
