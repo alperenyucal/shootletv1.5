@@ -1,0 +1,13 @@
+{
+  "Form": {
+    "Messages": {
+      "any.required": "{{#label}} is required",
+      "string.alphanum": "{{#label}} must only contain alpha-numeric characters",
+      "string.email": "Email is not valid",
+      "string.empty": "{{#label}} can't be empty",
+      "string.max": "{{#label}} should be less than or equal to {{#limit}} characters long",
+      "string.min": "{{#label}} should be at least {{#limit}} characters long",
+      "string.pattern.letter": "{{#label}} should start with a letter"
+    }
+  }
+}

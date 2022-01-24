@@ -6,8 +6,10 @@
 
 ### Added
 
+* i18n support
+* Auth Module
 * Custom error pages
-* Zod validation library
+* Joi validation library
 * ESlint support
 * Stylelint support
 * Redux typescript support

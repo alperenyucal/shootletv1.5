@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../../lib/hooks/redux';
 import { logout, selectAuth } from '../../../lib/redux/auth/authSlice';
 import { AvatarSection } from './Avatar/Avatar';
 import { useRouter } from 'next/router';
+import { LanguageSelect } from '../..';
 
 export interface NavbarProps {
   fixed?: boolean;
@@ -170,6 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </>
             ) : (
               <>
+                <LanguageSelect />
                 <Button type="text">
                   <Link href="/login">Log in</Link>
                 </Button>

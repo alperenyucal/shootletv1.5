@@ -4,16 +4,16 @@ import { RootState } from '../store';
 
 export interface AuthState {
   user?: {
-    firstname: string,
-    lastname: string,
-    email: string,
-    avatar: string,
-    country: string,
-    city: string,
-  },
-  accessToken?: string,
-  refreshToken?: string,
-  isAuthorized: boolean,
+    firstname: string;
+    lastname: string;
+    email: string;
+    avatar: string;
+    country: string;
+    city: string;
+  };
+  accessToken?: string;
+  refreshToken?: string;
+  isAuthorized: boolean;
 }
 
 const initialState: AuthState = {

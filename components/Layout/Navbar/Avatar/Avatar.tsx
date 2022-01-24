@@ -3,7 +3,7 @@ import Avatar from 'antd/lib/avatar/avatar';
 import { AuthState } from '../../../../lib/redux/auth/authSlice';
 
 interface AvatarSectionProps {
-  user: AuthState['user']
+  user: AuthState['user'];
 }
 
 export const AvatarSection = ({ user }: AvatarSectionProps) => {

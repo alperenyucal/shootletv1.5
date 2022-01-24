@@ -1,18 +1,9 @@
 import UserModel from '../../../lib/models/UserModel';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { z } from 'zod';
 import { NextApiHandler } from 'next';
 import { connectDB, logger } from '../../../lib/utils/middleware';
 
-const reqSchema = z.object({
-  email: z.string().email().nonempty(),
-  password: z.string()
-    .regex(/^[a-zA-Z0-9_*.!@#$%^&(){}[]:;<>,.?\/~+-=|]*$/)
-    .min(8)
-    .max(30)
-    .nonempty(),
-});
 
 const handler: NextApiHandler = async (req, res) => {
   try {
@@ -23,11 +14,6 @@ const handler: NextApiHandler = async (req, res) => {
 
     switch (req.method) {
       case 'POST': {
-        await reqSchema.parseAsync({
-          email,
-          password,
-        });
-
         const user = await UserModel.findOne({ email });
         if (user) {
           const isValid = await bcrypt.compare(password, user.password);

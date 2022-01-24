@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { AuthForm } from '../components/templates';
 import { useAppDispatch } from '../lib/hooks/redux';
 import { login } from '../lib/redux/auth/authSlice';
+import { emailValidator, passwordValidator } from '../lib/utils/validators';
 
 interface FormValues {
   email: string;
@@ -21,6 +22,7 @@ const Login: NextPage = () => {
 
   const [form] = Form.useForm<FormValues>();
 
+  const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(false);
 
   return (
@@ -40,6 +42,7 @@ const Login: NextPage = () => {
         name="login-form"
         layout="vertical"
         onFinish={handleFinish}
+        validateTrigger={'submit'}
       >
         {loginError && (
           <Alert
@@ -54,7 +57,10 @@ const Login: NextPage = () => {
         )}
         <Form.Item
           name="email"
-          rules={[{ message: 'Please enter your email!' }]}
+          rules={[{
+            validator: (_, email) =>
+              emailValidator.validateAsync(email),
+          }]}
         >
           <Input
             placeholder="email"
@@ -63,7 +69,10 @@ const Login: NextPage = () => {
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ message: 'Please enter your password!' }]}
+          rules={[{
+            validator: (_, password) =>
+              passwordValidator.validateAsync(password),
+          }]}
         >
           <Input
             type="password"
@@ -77,6 +86,7 @@ const Login: NextPage = () => {
         >
           <Link href="/forgot-password">Forgot Password?</Link>
           <Button
+            loading={loading}
             type="primary"
             htmlType="submit"
             className="st-push"
@@ -89,17 +99,20 @@ const Login: NextPage = () => {
   );
 
   async function handleFinish({ email, password }: FormValues) {
+    setLoading(true);
     try {
       const res = await axios.post(
         '/api/auth/login', { email, password });
-      console.log(res);
 
       dispatch(login(res.data));
+      setLoading(false);
+
       if (router.query.ref) router.push('/' + router.query.ref.toString());
       else router.push('/');
     } catch (error) {
       setLoginError(true);
     }
+    setLoading(false);
   }
 };
 

@@ -45,7 +45,7 @@ const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             </div>
           )}
         </main>
-        <Footer />
+        {layoutState.footer?.show && <Footer />}
       </div>
     </LayoutContext.Provider>
   );
